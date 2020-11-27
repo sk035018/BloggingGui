@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,7 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { signUp } from '../dao/dao';
 
 function Copyright() {
   return (
@@ -48,6 +49,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const [first_name, setFirstName] = useState(""),
+        [last_name, setLastName] = useState(""),
+        [email, setEmail] = useState(""),
+        [password, setPassword] = useState("");
+
+  const submit = () => {
+    debugger;
+    const user = {first_name, last_name, email, password};
+    signUp(user); 
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -59,7 +70,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={submit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -70,6 +81,8 @@ export default function SignUp() {
                 fullWidth
                 id="firstName"
                 label="First Name"
+                value={first_name}
+                onChange={(e)=>{setFirstName(e.target.value)}}
                 autoFocus
               />
             </Grid>
@@ -82,6 +95,8 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                value={last_name}
+                onChange={(e)=>{setLastName(e.target.value)}}
               />
             </Grid>
             <Grid item xs={12}>
@@ -93,6 +108,8 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={email}
+                onChange={(e)=>{setEmail(e.target.value)}}
               />
             </Grid>
             <Grid item xs={12}>
@@ -105,6 +122,8 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={password}
+                onChange={(e)=>{setPassword(e.target.value)}}
               />
             </Grid>
             <Grid item xs={12}>

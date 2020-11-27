@@ -30,12 +30,18 @@ export default function ButtonAppBar() {
             <MenuIcon style = {{marginRight : '10px'}}/> Blogging App 
           </IconButton>
           <Typography variant="h6" className={classes.title} />
-            <Link to = {'/signup'} style = {{ textDecoration:"none", color:"inherit", marginRight:'10px'}}>
-                SIGN UP
-            </Link>
-            <Link to = {'/signin'} style = {{ textDecoration:"none", color:"inherit"}}>
-                SIGN IN
-            </Link>
+          <Link to = {'/'} style = {{ textDecoration:"none", color:"inherit", marginRight:'10px'}}>
+              HOME
+          </Link>
+          <Link to = {'/viewBlog'} style = {{ textDecoration:"none", color:"inherit", marginRight:'10px'}}>
+              VIEW BLOG
+          </Link>
+          <Link to = {'/signup'} style = {{ textDecoration:"none", color:"inherit", marginRight:'10px'}}>
+              SIGN UP
+          </Link>
+          <Link to = {'/signin'} style = {{ textDecoration:"none", color:"inherit"}}>
+              SIGN IN
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
